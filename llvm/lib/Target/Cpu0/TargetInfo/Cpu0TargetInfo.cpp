@@ -18,12 +18,12 @@ Target& llvm::getTheCpu0Target() {
     return TheCpu0Target;
 }
 
-Target& llvm::getTheCpu0e1Target() {
-    static Target TheCpu0e1Target;
-    return TheCpu0e1Target;
+Target& llvm::getTheCpu0elTarget() {
+    static Target TheCpu0elTarget;
+    return TheCpu0elTarget;
 }
 
 extern "C" void LLVMInitializeCpu0TargetInfo() {
     RegisterTarget<Triple::cpu0, /*HasJIT=*/true> X(getTheCpu0Target(), "cpu0", "Cpu0", "Cpu0");
-    RegisterTarget<Triple::cpu0e1, /*HasJIT=*/true> Y(getTheCpu0e1Target(), "cpu0e1", "Cpu0e1", "Cpu0");
+    RegisterTarget<Triple::cpu0el, /*HasJIT=*/true> Y(getTheCpu0elTarget(), "cpu0el", "Cpu0el", "Cpu0");
 }

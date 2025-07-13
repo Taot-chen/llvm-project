@@ -21,7 +21,7 @@ namespace llvm {
     class Triple;
 
     Target &getTheCpu0Target();
-    Target &getTheCpu0e1Target();
+    Target &getTheCpu0elTarget();
 }
 
 

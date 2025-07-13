@@ -86,7 +86,7 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
   case xcore:          return "xcore";
   case xtensa:         return "xtensa";
   case cpu0:           return "cpu0";
-  case cpu0e1:         return "cpu0e1";
+  case cpu0el:         return "cpu0el";
   }
 
   llvm_unreachable("Invalid ArchType!");
@@ -253,7 +253,7 @@ StringRef Triple::getArchTypePrefix(ArchType Kind) {
   case xtensa:      return "xtensa";
 
   case cpu0:
-  case cpu0e1:      return "cpu0";
+  case cpu0el:      return "cpu0";
   }
 }
 
@@ -497,7 +497,7 @@ Triple::ArchType Triple::getArchTypeForLLVMName(StringRef Name) {
     .Case("dxil", dxil)
     .Case("xtensa", xtensa)
     .Case("cpu0", cpu0)
-    .Case("cpu0e1", cpu0e1)
+    .Case("cpu0el", cpu0el)
     .Default(UnknownArch);
 }
 
@@ -645,7 +645,7 @@ static Triple::ArchType parseArch(StringRef ArchName) {
                  Triple::dxil)
           .Case("xtensa", Triple::xtensa)
           .Cases("cpu0", "cpu0eb", "cpu0allegrex", Triple::cpu0)
-          .Cases("cpu0e1", "cpu0allegrexe1", Triple::cpu0e1)
+          .Cases("cpu0el", "cpu0allegrexe1", Triple::cpu0el)
           .Default(Triple::UnknownArch);
 
   // Some architectures require special parsing logic just to compute the
@@ -990,7 +990,7 @@ static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
   case Triple::xcore:
   case Triple::xtensa:
   case Triple::cpu0:
-  case Triple::cpu0e1:
+  case Triple::cpu0el:
     return Triple::ELF;
 
   case Triple::mipsel:
@@ -1715,7 +1715,7 @@ unsigned Triple::getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::xcore:
   case llvm::Triple::xtensa:
   case llvm::Triple::cpu0:
-  case llvm::Triple::cpu0e1:
+  case llvm::Triple::cpu0el:
     return 32;
 
   case llvm::Triple::aarch64:
@@ -1825,7 +1825,7 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::xcore:
   case Triple::xtensa:
   case Triple::cpu0:
-  case Triple::cpu0e1:
+  case Triple::cpu0el:
     // Already 32-bit.
     break;
 
